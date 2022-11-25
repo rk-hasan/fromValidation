@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Check Form Field</title>
+</head>
+<body>
+<form name="myform" action="" method="" onsubmit="return validform()">
+	<table height="300" width="400" align="center" border="1">
+		<tr>
+			<td>Name</td>
+			<td>:</td>
+			<td><input type="text" name="name" value=""></td>
+		</tr>
+
+		<tr>
+			<td>Email</td>
+			<td>:</td>
+			<td><input type="email" name="email"></td>
+		</tr>
+
+
+		<tr>
+			<td>Address</td>
+			<td>:</td>
+			<td><textarea name="address"></textarea></td>
+		</tr>
+
+
+		<tr>
+			<td>Telephone</td>
+			<td>:</td>
+			<td><input type="text" name="phone">&nbsp;<input type="checkbox" name="check" onclick="checkenableddisabled(this)"></td>
+		</tr>
+
+
+		<tr>
+			<td>Select One</td>
+			<td>:</td>
+			<td>
+				<select name="select">
+					<option>Select One</option>
+					<option>Laptop</option>
+					<option>Desktop</option>
+					<option>Tablet/Pc</option>
+				</select>
+			</td>
+		</tr>
+
+
+
+		<tr>
+			<td></td>
+			<td><input type="submit" name="submit" value="Submit"/>&nbsp;</td>
+			<td>
+				<div id="sms" style="color: red;"></div>
+			</td>
+		</tr>
+
+
+		<tr>
+			<td></td>
+			<td><input type="reset" name="reset" value="reset"/>&nbsp;</td>
+		</tr>
+	</table>
+	</form>
+
+
+	<script type="text/javascript">
+
+
+
+
+		function validform(){
+
+		var name = document.myform.name;
+		var email = document.myform.email;
+		var address = document.myform.address;
+		var phone = document.myform.phone;
+		var check = document.myform.check;
+		var select = document.myform.select;
+
+			if(name.value =="")
+			{
+				document.getElementById("sms").innerHTML ="please Enter A Name";
+				return false;
+
+			}
+
+			if(email.value == "")
+			{
+				document.getElementById("sms").innerHTML ="Please Enter Email Address";
+				return false;
+			}
+
+
+			//for valid Email Address
+
+
+			/*if(email.value.indexOf("@", 0)<0)
+			{
+				document.getElementById("sms").innerHTML ="Please Enter valid Email Address";
+				return false;
+			}
+
+
+			if(email.value.indexOf(".", 0)<0)
+			{
+				document.getElementById("sms").innerHTML ="Please Enter valid Email Address";
+				return false;
+			}*/
+
+
+			if(address.value == "")
+			{
+				document.getElementById("sms").innerHTML ="please Enter Your Address";
+				return false;
+			}
+
+
+			if(phone.value == "" && check.checked == false)
+			{
+				document.getElementById("sms").innerHTML ="please Enter Phone No";
+				return false;
+			}
+
+
+			if(select.selectedIndex <1)
+			{
+				document.getElementById("sms").innerHTML ="please Select A Category";
+				return false;
+
+			}
+
+
+
+			}
+
+
+
+			function checkenableddisabled(check)
+			{
+				if(check.checked == true)
+				{
+					document.myform.phone.disabled = true;
+				}
+
+					else
+					{
+						document.myform.phone.disabled = false;
+					}
+			}
+
+	</script>
+
+</body>
+</html>
